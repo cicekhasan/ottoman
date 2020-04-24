@@ -1,0 +1,18 @@
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+/*  font-family: 'Tangerine', cursive !important;
+  text-shadow : 4px 4px 4px green ;*/
+}
+
+.boyut-8  {font-size      : 8px;                }
+.boyut-10 {font-size      : 10px;               }
+.boyut-12 {font-size      : 12px;               }
+.boyut-16 {font-size      : 16px;               }
+.boyut-32 {font-size      : 32px;               }
+.kalin    {font-weight    : bold;               }
+.ortala   {text-align     : center              }
+.dikey    {vertical-align : middle  !important; }
+.sol      {text-align     : left                }
+.sag      {text-align     : right;              }
+
