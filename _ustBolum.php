@@ -25,18 +25,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Anasayfa</a>
+          <a class="nav-link" href="?sayfa=anasayfa">Anasayfa</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Kategoriler
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="kategori.php">Php</a>
-            <a class="dropdown-item" href="kategori.php">Linux</a>
-            <a class="dropdown-item" href="kategori.php">Markdown</a>
+            <a class="dropdown-item" href="?sayfa=kategori">Php</a>
+            <a class="dropdown-item" href="?sayfa=kategori">Linux</a>
+            <a class="dropdown-item" href="?sayfa=kategori">Markdown</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="kategori.php">Genel</a>
+            <a class="dropdown-item" href="?sayfa=kategori">Genel</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -44,32 +44,32 @@
             Yönetim
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="uyeler.php">Üyeler</a>
-            <a class="dropdown-item" href="kategoriler.php">Kategoriler</a>
-            <a class="dropdown-item" href="icerikler.php">İçerikler</a>
+            <a class="dropdown-item" href="?sayfa=uyeler">Üyeler</a>
+            <a class="dropdown-item" href="?sayfa=kategoriler">Kategoriler</a>
+            <a class="dropdown-item" href="?sayfa=icerikler">İçerikler</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="yonetim.php">Yönetim</a>
+            <a class="dropdown-item" href="?sayfa=yonetim">Yönetim</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="giris.php">Giriş</a>
+          <a class="nav-link" href="?sayfa=giris">Giriş</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Hasan Çiçek
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="profil.php">Profil</a>
-            <a class="dropdown-item" href="site-ayarlari.php">Ayarlar</a>
+            <a class="dropdown-item" href="?sayfa=profil">Profil</a>
+            <a class="dropdown-item" href="?sayfa=site-ayarlari">Ayarlar</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="cikis.php">Çıkış</a>
+            <a class="dropdown-item" href="?sayfa=cikis">Çıkış</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="hakkimizda.php">Hakkımızda</a>
+          <a class="nav-link" href="?sayfa=hakkimizda">Hakkımızda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="iletisim.php">İletişim</a>
+          <a class="nav-link" href="?sayfa=iletisim">İletişim</a>
         </li>
       </ul>
       <form class="form-inline ml-5 my-2 my-lg-0">

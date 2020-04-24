@@ -4,19 +4,15 @@
         <div class="card p-2">
           <div class="card-header bg-success text-white text-center">OTTOMAN TORUNU GİRİŞİ</div>
           <div class="card-body">
-            <form action="giris.php" method="post">
+            <form action="eylem.php" method="post">
               <div class="form-group">
                 <label for="ottomanInputEmail1">E-Posta Adresi</label>
-                <input type="email" class="form-control" id="ottomanInputEmail1" aria-describedby="emailHelp" required>
+                <input type="email" class="form-control" id="ottomanInputEmail1" name="ePosta" aria-describedby="emailHelp" required>
                 <small id="emailHelp" class="form-text text-muted">E-Postanızı başkası ile paylaşmayacağız.</small>
               </div>
               <div class="form-group">
                 <label for="ottomanInputPassword1">Parola</label>
-                <input type="password" class="form-control" id="ottomanInputPassword1" required>
-              </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="ottomanCheck1">
-                <label class="form-check-label" for="ottomanCheck1">Beni hatırla.</label>
+                <input type="password" class="form-control" id="ottomanInputPassword1" name="parola" required>
               </div>
               <button type="submit" name="giris" class="btn btn-success btn-sm btn-block">Giriş</button>
             </form>
@@ -33,7 +29,7 @@
                   <input type="text" class="form-control" placeholder="E-Posta hesabınız..." required>
                 </div>
               </div>
-              <small class="form-text text-muted">E-Posta hesabınız giriş için kullanılacaktır...</small><br /><br />         
+              <small class="form-text text-muted">E-Posta hesabınız giriş için kullanılacaktır...</small><br />        
               <div class="row">
                 <div class="col-md-6">
                   <input type="text" class="form-control" placeholder="Parolanız..." required>

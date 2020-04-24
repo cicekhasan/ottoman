@@ -6,7 +6,7 @@ $sayfa = $_GET['sayfa'];
 
 if ($sayfa=='cikis') {
   cikis();
-  //header('Location:index.php');
+  header('Location:index.php');
 }
 
 $arrSayfalar = array();
@@ -25,7 +25,7 @@ $arrSayfalar[] = 'profil';
 $arrSayfalar[] = 'site-ayarlari';
 
 in_array($sayfa, $arrSayfalar) ? $goster = $sayfa : $goster = 'anasayfa' ;
-($sayfa=='cikis') ? $goster = 'anasayfa' : null ;
+//($sayfa=='cikis') ? $goster = 'anasayfa' : null ;
 
 include '_ustBolum.php';
 include $goster.'.php';
