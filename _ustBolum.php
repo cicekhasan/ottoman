@@ -39,6 +39,15 @@
             <a class="dropdown-item" href="?sayfa=kategori">Genel</a>
           </div>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="?sayfa=hakkimizda">Hakkımızda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="?sayfa=iletisim">İletişim</a>
+        </li>
+        <?php 
+        if (isset($_SESSION["adi"])) {
+          echo '
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Yönetim
@@ -51,12 +60,9 @@
             <a class="dropdown-item" href="?sayfa=yonetim">Yönetim</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?sayfa=giris">Giriş</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php echo $_SESSION["adi"]; ?>
+            '.$_SESSION["adi"].'
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="?sayfa=profil">Profil</a>
@@ -65,12 +71,14 @@
             <a class="dropdown-item" href="?sayfa=cikis">Çıkış</a>
           </div>
         </li>
+        ';
+        }else{
+          echo '        
         <li class="nav-item">
-          <a class="nav-link" href="?sayfa=hakkimizda">Hakkımızda</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?sayfa=iletisim">İletişim</a>
-        </li>
+          <a class="nav-link" href="?sayfa=giris">Giriş</a>
+        </li>';
+        }
+        ?>
       </ul>
       <form class="form-inline ml-5 my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Site içi arama..." aria-label="Search">

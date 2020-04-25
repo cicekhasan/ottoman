@@ -5,7 +5,10 @@ include 'fonksiyonlar.php';
 $sayfa = $_GET['sayfa'];
 
 if ($sayfa=='cikis') {
-  cikis();
+  //cikis();
+  session_start();
+	session_destroy();
+	setcookie("cerez", $ePosta, time() - 1);
   header('Location:index.php');
 }
 
