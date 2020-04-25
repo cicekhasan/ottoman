@@ -24,13 +24,13 @@
 	    			while ($sonuc = $sorgu->fetch()) {
 	    			?>
 	    			<tr class="<?php echo ($sonuc->yetki==18) ? "camGobegi-1":null; ?>">
-	    				<td><?php echo $sonuc->ID ?></td>
-	    				<td><?php echo $sonuc->adi ?></td>
-	    				<td><?php echo $sonuc->ePosta ?></td>
+	    				<td><?php echo $sonuc->ID; ?></td>
+	    				<td><?php echo htmlspecialchars_decode($sonuc->adi); ?></td>
+	    				<td><?php echo htmlspecialchars_decode($sonuc->ePosta); ?></td>
 	    				<td><?php echo ($sonuc->yetki==18) ? "Yazar":"Üye"; ?></td>
-	    				<td><?php echo $sonuc->konum ?></td>
-	    				<td><?php echo $sonuc->ipAdresi ?></td>
-	    				<td><?php echo $sonuc->eklenme ?></td>
+	    				<td><?php echo $sonuc->konum; ?></td>
+	    				<td><?php echo $sonuc->ipAdresi; ?></td>
+	    				<td><?php echo $sonuc->eklenme; ?></td>
 	    				<td><?php echo ($sonuc->aktif==1) ? "Aktif":"Pasif"; ?></td>
 	    				<td>
 	    					<a href="?sayfa=duzenle&id=<?php echo $sonuc->ID ?>" class="text-danger"><i class="fa fa-edit"></i></a>

@@ -46,7 +46,7 @@
           <a class="nav-link" href="?sayfa=iletisim">İletişim</a>
         </li>
         <?php 
-        if (isset($_SESSION["adi"])) {
+        if ($_SESSION["yetki"]==18) {
           echo '
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,6 +60,10 @@
             <a class="dropdown-item" href="?sayfa=yonetim">Yönetim</a>
           </div>
         </li>
+        ';
+        }
+        if (isset($_SESSION["adi"])) {
+          echo '
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             '.$_SESSION["adi"].'

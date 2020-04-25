@@ -42,29 +42,4 @@ if (isset($_POST['giris'])) {
   }else{echo "E-Posta veya Parola yanlış!";}
   $vt = null;
 }
-// Üyeol formu gönderilmişse
-if (isset($_POST['uyeOl'])) {
-  include("baglan.php");
-  $ePosta       = htmlspecialchars($_POST['ePosta']);
-  $parola       = md5($_POST['parola']);
-  $parolaTekrar = md5($_POST['parolaTekrar']);
-  $adi          = htmlspecialchars($_POST['adi']);
-  $kullaniciAdi = htmlspecialchars($_POST['kullaniciAdi']);
-  $proDili      = htmlspecialchars($_POST['proDili']);
-  $konum        = htmlspecialchars("Ankara");
-  $ipAdresi     = htmlspecialchars("127.0.0.1");
-  $eklenme      = date("d/m/Y G:i:s");
-
-  if ($ePosta<>"" && $parola<>"" && $parolaTekrar<>"" && $adi<>"" && $kullaniciAdi<>"") {
-    if ($parola == $parolaTekrar) {
-      if ($proDili=='') {
-        $proDili = "Yok.";
-      }
-      $sorgu = $vt->prepare("INSERT INTO uyeler SET ePosta=?,parola=?,adi=?,kullaniciAdi=?,proDili=?,konum=?,ipAdresi=?,eklenme=?,yetki=?,aktif=?");
-      $sorgu->execute(["{$ePosta}","{$parola}","{$adi}","{$kullaniciAdi}","{$proDili}","{$konum}","{$ipAdresi}","{$eklenme}","1","1"]);
-    }else{echo "Parola tekrar ile uyuşmuyor!";}
-  }else{echo "Boş alan bırakamazsınız!";}  
-  header("location:index.php");              
-  $vt = null;
-}
 ?>
