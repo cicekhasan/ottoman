@@ -13,80 +13,32 @@
 	    				<th>IP</th>
 	    				<th>Eklenme Tarihi</th>
 	    				<th>Durumu</th>
-	    				<th>İşlem</th>
+	    				<th>Düzenle</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<tr class="camGobegi-1">
-	    				<td>1</td>
-	    				<td>Hasan Çiçek</td>
-	    				<td>hasan.cicek@yandex.com.tr</td>
-	    				<td>Yazar</td>
-	    				<td>Ankara</td>
-	    				<td>175.156.88.45</td>
-	    				<td>15.04.2020</td>
-	    				<td>Aktif</td>
+	    			<?php
+						include("baglan.php");
+	    			$sorgu = $vt->prepare("SELECT * FROM uyeler");
+	    			$sorgu->execute();
+	    			while ($sonuc = $sorgu->fetch()) {
+	    			?>
+	    			<tr class="<?php echo ($sonuc->yetki==18) ? "camGobegi-1":null; ?>">
+	    				<td><?php echo $sonuc->ID ?></td>
+	    				<td><?php echo $sonuc->adi ?></td>
+	    				<td><?php echo $sonuc->ePosta ?></td>
+	    				<td><?php echo ($sonuc->yetki==18) ? "Yazar":"Üye"; ?></td>
+	    				<td><?php echo $sonuc->konum ?></td>
+	    				<td><?php echo $sonuc->ipAdresi ?></td>
+	    				<td><?php echo $sonuc->eklenme ?></td>
+	    				<td><?php echo ($sonuc->aktif==1) ? "Aktif":"Pasif"; ?></td>
 	    				<td>
-	    					<a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-	    					<a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
+	    					<a href="?sayfa=duzenle&id=<?php echo $sonuc->ID ?>" class="text-danger"><i class="fa fa-edit"></i></a>
 	    				</td>
 	    			</tr>
-	    			<tr>
-	    				<td>2</td>
-	    				<td>Horoz Nuri</td>
-	    				<td>horoz@gmail.com</td>
-	    				<td>Üye</td>
-	    				<td>İstanbul</td>
-	    				<td>212.45.123.34</td>
-	    				<td>14.04.2020</td>
-	    				<td>Aktif</td>
-	    				<td>
-	    					<a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-	    					<a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
-	    				</td>
-	    			</tr>
-	    			<tr>
-	    				<td>3</td>
-	    				<td>Türkan Şoray</td>
-	    				<td>sorayTurkan@hotmail.com</td>
-	    				<td>Üye</td>
-	    				<td>Kayseri</td>
-	    				<td>125.62.124.66</td>
-	    				<td>14.04.2020</td>
-	    				<td>Aktif</td>
-	    				<td>
-	    					<a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-	    					<a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
-	    				</td>
-	    			</tr>
-	    			<tr>
-	    				<td>4</td>
-	    				<td>Ayhan Işık</td>
-	    				<td>ayhan.isik@gmail.com</td>
-	    				<td>Üye</td>
-	    				<td>Yozgat</td>
-	    				<td>126.122.111.45</td>
-	    				<td>13.04.2020</td>
-	    				<td>Aktif</td>
-	    				<td>
-	    					<a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-	    					<a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
-	    				</td>
-	    			</tr>
-	    			<tr class="mor-1">
-	    				<td>5</td>
-	    				<td>Brad Pitt</td>
-	    				<td>brad.pitt@gmail.com</td>
-	    				<td>Üye</td>
-	    				<td>Newyork</td>
-	    				<td>1.12.145.2</td>
-	    				<td>13.04.2020</td>
-	    				<td>Pasif</td>
-	    				<td>
-	    					<a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-	    					<a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
-	    				</td>
-	    			</tr>
+	    			<?php
+	    			} // while bitişi.
+	    			?>
 	    		</tbody>
 	    	</table>
 	    </div>

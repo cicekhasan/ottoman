@@ -9,13 +9,15 @@ if (isset($_POST['giris'])) {
     $girisKontrol->execute(["{$ePosta}","{$parola}"]);
 
     if (isset($girisKontrol)) {
-      $_SESSION["oturum"]       = TRUE;
+      $_SESSION["oturum"]       = "1453";
       $_SESSION["ePosta"]       = $uye->ePosta;
       $_SESSION["adi"]          = $uye->adi;
       $_SESSION["yetki"]        = $uye->yetki;
       $_SESSION["kullaniciAdi"] = $uye->kullaniciAdi;
+      header('Location:index.php');
+    }else{
+      echo "E-Posta ya da Parola yanlış!";
     }
-    header('Location:index.php');
   }catch(PDOException $e){
     echo 'HATA: '. $e->getMessage();
   }
