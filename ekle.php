@@ -1,3 +1,27 @@
+<?php 
+session_start();
+if (isset($_POST['icerikEkle'])) {
+	daire($_POST);
+  $baslik      = $_POST['baslik'];
+  $durum       = $_POST['durum'];
+  $kategori    = $_POST['kategori'];
+  $yeniKategori= $_POST['yeniKategori'];
+  $icerikResmi = $_POST['icerikResmi'];
+  $icerik      = $_POST['icerik'];
+
+	include("baglan.php");
+	if (isset($yeniKategori)) {
+		if ($kategori=="Kategori Seç!") {
+			$sorgu = $vt->prepare("INSERT INTO kategoriler SET adi=?");
+			$sorgu->execute(["{$yeniKategori}"]);
+		}
+		if ($kategori!="Kategori Seç!") {
+			$altKategori = $vt->prepare("INSERT INTO altKategoriler SET adi=?,kategoriID=?");
+			$altKategori->execute(["{$yeniKategori}","{$kategori}"]);
+		}
+	}
+}
+ ?>
   <div class="container my-3 p-2">
   	<div class="row">
   		<div class="col-md-12">  			
@@ -6,7 +30,7 @@
 	  				YENİ İÇERİK EKLEME SAYFASI
 	  			</div>
 	  			<div class="card-body">
-						<form>  
+						<form action="" method="post">  
 							<div class="row">
 								<div class="col-md-8">
 									<div class="form-group row">
@@ -35,7 +59,7 @@
 									      $sorgu->execute();
 									      while ($kategori = $sorgu->fetch()) {
 									      	echo '
-									      	<option>'.$kategori->adi.'</option>
+									      	<option value="'.$kategori->ID.'">'.$kategori->adi.'</option>
 									      	';
 									      }
 									      ?>

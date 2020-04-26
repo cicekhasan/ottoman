@@ -54,11 +54,12 @@
             Yönetim
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="?sayfa=yonetim">Yönetim</a>
             <a class="dropdown-item" href="?sayfa=uyeler">Üyeler</a>
             <a class="dropdown-item" href="?sayfa=kategoriler">Kategoriler</a>
             <a class="dropdown-item" href="?sayfa=icerikler">İçerikler</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="?sayfa=yonetim">Yönetim</a>
+            <a class="dropdown-item" href="?sayfa=ekle">İçerik Ekle</a>
           </div>
         </li>
         ';
