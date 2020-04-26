@@ -14,7 +14,7 @@
   <script src="js/fontawesome.js"></script>
   <!-- CK EDITOR -->
   <script type="text/javascript">
-    CKEDITOR.replace( 'icerik' );
+    CKEDITOR.replace('icerik');
   </script>
 </body>
 </html>

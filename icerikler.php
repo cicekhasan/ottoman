@@ -2,7 +2,7 @@
     <h3>İÇERİKLER...</h3>
     <div class="row">
       <div class="col-md-12">
-        <small><a href="ekle.php">İçerik Ekle</a></small>
+        <small><a href="?sayfa=ekle">İçerik Ekle</a></small>
         <table class="table table-responsive-sm teble-sm table-hover boyut-12">
           <thead class="camurcun-6 camurcun-1t">
             <tr>
@@ -36,7 +36,7 @@
               <td>Aktif</td>
               <td>
                 <a href="#" title="Göster" class="text-success"><i class="fa fa-eye"></i></a><br />
-                <a href="#" title="Güncelle" class="text-danger"><i class="fa fa-edit"></i></a><br />
+                <a href="?sayfa=guncelle" title="Güncelle" class="text-danger"><i class="fa fa-edit"></i></a><br />
               </td>
             </tr>
             <tr>
