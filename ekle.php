@@ -4,10 +4,10 @@ if (isset($_POST['icerikEkle'])) {
 
   $baslik      = $_POST['baslik'];
   $durum       = $_POST['durum'];
-  $kategori    = $_POST['kategori'];
-  $yeniKategori= $_POST['yeniKategori'];
+  $kategori    = htmlspecialchars($_POST['kategori']);
+  $yeniKategori= htmlspecialchars($_POST['yeniKategori']);
   $icerik      = htmlspecialchars($_POST['icerik']);
-  $ozet        = substr($icerik,0,250)."...";
+  $ozet        = substr($icerik,0,500)."...";
   $icerikResmi = $_POST['icerikResmi'];
   $eklenme     = date("d/m/Y G:i:s");
 

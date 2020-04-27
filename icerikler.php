@@ -28,15 +28,13 @@
               echo '
             <tr>
               <td>'.$icerik->ID.'</td>
-              <td>'.$icerik->kategori.'</td>
-              <td>'.$icerik->baslik.'</td>
-              <td>'.$icerik->ozet.'</td>
+              <td>'.htmlspecialchars_decode($icerik->kategori).'</td>
+              <td>'.htmlspecialchars_decode($icerik->baslik).'</td>
+              <td>'.htmlspecialchars_decode($icerik->ozet).'</td>
               <td>Hasan Çiçek</td>
               <td>'.$icerik->eklenme.'</td>
               <td>'.$icerik->guncellenme.'</td>
-              <td>';
-              echo($icerik->aktif==1)?"Aktif":"Pasif";
-              echo '</td>
+              <td>'.$icerik->aktif.'</td>
               <td>
                 <a href="#" title="Göster" class="text-success"><i class="fa fa-eye"></i></a><br />
                 <a href="?sayfa=guncelle" title="Güncelle" class="text-danger"><i class="fa fa-edit"></i></a><br />
