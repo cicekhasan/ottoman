@@ -1,26 +1,49 @@
 <?php 
 session_start();
 if (isset($_POST['icerikEkle'])) {
+
 	daire($_POST);
+	echo "<br />";
+	daire($_FILES);
+
   $baslik      = $_POST['baslik'];
   $durum       = $_POST['durum'];
   $kategori    = $_POST['kategori'];
   $yeniKategori= $_POST['yeniKategori'];
-  $icerikResmi = $_POST['icerikResmi'];
   $icerik      = $_POST['icerik'];
+  $icerikResmi = $_POST['icerikResmi'];
 
 	include("baglan.php");
 	if (isset($yeniKategori)) {
-		if ($kategori=="Kategori Seç!") {
+		if ($kategori=="Kategori Seç!" && $yeniKategori!="") {
 			$sorgu = $vt->prepare("INSERT INTO kategoriler SET adi=?");
 			$sorgu->execute(["{$yeniKategori}"]);
-		}
-		if ($kategori!="Kategori Seç!") {
+		}else if ($kategori!="Kategori Seç!" && $yeniKategori!="") {
 			$altKategori = $vt->prepare("INSERT INTO altKategoriler SET adi=?,kategoriID=?");
 			$altKategori->execute(["{$yeniKategori}","{$kategori}"]);
 		}
 	}
-}
+
+	if ($_FILES["resim"]["size"]<1024*1024){
+	 	if ($_FILES['resim']['name']){
+	    $dosyaYolu = "uploads/site/";
+	    $dosyaAdi  = $_FILES['resim']['name'];
+	    $adiBol    = explode('.', $dosyaAdi );
+	    $sonuncu   = count($adiBol)-1;
+	    $format    = strtoupper($adiBol["$sonuncu"]);  
+	    $strUret   = array("ay","su","bey","tr","tc");
+	    $sayi_tut  = rand(1,101453);
+	    $yeniAd    = $strUret[rand(0,6)].$sayi_tut; 
+	    $result    = move_uploaded_file($_FILES['resim']['tmp_name'], $dosyaYolu.$yeniAd.".".$format);
+	    if($result)
+	      echo $resim_adi = $yeniAd.".".$format;
+	    else
+	      echo "Resim Yüklenemedi.";
+	 	} else
+	    echo "Resim bulunamadı.";
+	}
+ 
+} 
  ?>
   <div class="container my-3 p-2">
   	<div class="row">
@@ -30,7 +53,7 @@ if (isset($_POST['icerikEkle'])) {
 	  				YENİ İÇERİK EKLEME SAYFASI
 	  			</div>
 	  			<div class="card-body">
-						<form action="" method="post">  
+						<form action="" method="post" enctype="multipart/form-data">  
 							<div class="row">
 								<div class="col-md-8">
 									<div class="form-group row">
@@ -71,9 +94,9 @@ if (isset($_POST['icerikEkle'])) {
 								    </div>
 								  </div>
 									<div class="form-group row">
-								    <label for="icerikResmi" class="col-sm-2 col-form-label">İçerik Resmi</label>
+								    <label for="resim" class="col-sm-2 col-form-label">İçerik Resmi</label>
 								    <div class="col-sm-10">
-										  <input type="file" class="form-control-file" id="icerikResmi" name="icerikResmi">
+										  <input type="file" class="form-control-file" id="resim" name="resim">
 								    </div>
 								  </div>
 								</div>
