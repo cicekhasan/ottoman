@@ -2,47 +2,40 @@
 session_start();
 if (isset($_POST['icerikEkle'])) {
 
-	daire($_POST);
-	echo "<br />";
-	daire($_FILES);
-
   $baslik      = $_POST['baslik'];
   $durum       = $_POST['durum'];
   $kategori    = $_POST['kategori'];
   $yeniKategori= $_POST['yeniKategori'];
-  $icerik      = $_POST['icerik'];
+  $icerik      = htmlspecialchars($_POST['icerik']);
+  $ozet        = substr($icerik,0,250)."...";
   $icerikResmi = $_POST['icerikResmi'];
+  $eklenme     = date("d/m/Y G:i:s");
 
+  // Kategori işlemleri
 	include("baglan.php");
 	if (isset($yeniKategori)) {
 		if ($kategori=="Kategori Seç!" && $yeniKategori!="") {
 			$sorgu = $vt->prepare("INSERT INTO kategoriler SET adi=?");
 			$sorgu->execute(["{$yeniKategori}"]);
-		}else if ($kategori!="Kategori Seç!" && $yeniKategori!="") {
-			$altKategori = $vt->prepare("INSERT INTO altKategoriler SET adi=?,kategoriID=?");
-			$altKategori->execute(["{$yeniKategori}","{$kategori}"]);
 		}
 	}
+	// Resim işlemeri
+ 	if ($_FILES['resim']['name']){
+    $dosyaYolu = "uploads/site/";
+    $dosyaAdi  = $_FILES['resim']['name'];
+    $adiBol    = explode('.', $dosyaAdi );
+    $sonuncu   = count($adiBol)-1;
+    $format    = strtoupper($adiBol["$sonuncu"]);  
+    $strUret   = array("ay","su","be","tr","tc");
+    $sayi_tut  = rand(1,101453);
+    $yeniAd    = $strUret[rand(0,6)].$sayi_tut; 
+    $result    = move_uploaded_file($_FILES['resim']['tmp_name'], $dosyaYolu.$yeniAd.".".$format);
+    $resimYolu = $dosyaYolu.$yeniAd.".".$format;
+    echo (!isset($result)) ? '<div class="alert alert-danger text-center col-md-6 offset-md-3 mt-3">Resim yüklenemedi!</div>':null;
+ 	}else{echo '<div class="alert alert-danger text-center col-md-6 offset-md-3 mt-3">Resim bulunamadı!</div>';}
 
-	if ($_FILES["resim"]["size"]<1024*1024){
-	 	if ($_FILES['resim']['name']){
-	    $dosyaYolu = "uploads/site/";
-	    $dosyaAdi  = $_FILES['resim']['name'];
-	    $adiBol    = explode('.', $dosyaAdi );
-	    $sonuncu   = count($adiBol)-1;
-	    $format    = strtoupper($adiBol["$sonuncu"]);  
-	    $strUret   = array("ay","su","bey","tr","tc");
-	    $sayi_tut  = rand(1,101453);
-	    $yeniAd    = $strUret[rand(0,6)].$sayi_tut; 
-	    $result    = move_uploaded_file($_FILES['resim']['tmp_name'], $dosyaYolu.$yeniAd.".".$format);
-	    if($result)
-	      echo $resim_adi = $yeniAd.".".$format;
-	    else
-	      echo "Resim Yüklenemedi.";
-	 	} else
-	    echo "Resim bulunamadı.";
-	}
- 
+ 	$sorgu = $vt->prepare("INSERT INTO icerikler SET baslik=?,ozet=?,icerik=?,eklenme=?,aktif=?,kategori=?,icerikResmi=?");
+ 	$sorgu->execute(["{$baslik}","{$ozet}","{$icerik}","{$eklenme}","{$durum}","{$kategori}","{$resimYolu}"]);
 } 
  ?>
   <div class="container my-3 p-2">
@@ -66,8 +59,8 @@ if (isset($_POST['icerikEkle'])) {
 								    <label for="durum" class="col-sm-2 col-form-label">Durumu</label>
 								    <div class="col-sm-4">
 									    <select class="form-control" id="durum" name="durum">
-									      <option>Yayında</option>
-									      <option selected>Pasif</option>
+									      <option value="Pasif">Pasif</option>
+									      <option value="Aktif">Yayında</option>
 									    </select>
 								    </div>
 								  </div>
@@ -82,7 +75,7 @@ if (isset($_POST['icerikEkle'])) {
 									      $sorgu->execute();
 									      while ($kategori = $sorgu->fetch()) {
 									      	echo '
-									      	<option value="'.$kategori->ID.'">'.$kategori->adi.'</option>
+									      	<option value="'.$kategori->adi.'">'.$kategori->adi.'</option>
 									      	';
 									      }
 									      ?>
