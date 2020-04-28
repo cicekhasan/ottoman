@@ -50,3 +50,7 @@ $db = new PDO("sybase:host=localhost;dbname=testdb, user, pass");
 $db = new PDO("sqlite:my/database/path/database.db");
 ?>
 ```
+
+3. Dosya Uzantıları Listesi
+
+[Mime Type](https://www.sitepoint.com/mime-types-complete-list/)

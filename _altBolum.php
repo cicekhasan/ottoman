@@ -16,5 +16,8 @@
   <script type="text/javascript">
     CKEDITOR.replace('icerik');
   </script>
+  <script type="text/javascript">
+    CKEDITOR.replace('ozet');
+  </script>
 </body>
 </html>
