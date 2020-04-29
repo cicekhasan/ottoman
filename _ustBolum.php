@@ -44,16 +44,24 @@
             <a class="dropdown-item" href="?sayfa=kategori&kategori=<?php echo $kategori->adi ?>"><?php echo $kategori->adi ?></a>
             <?php
             }
+            $vt = null;
              ?>
           </div>
         </li>
+        <?php
+        include("baglan.php");
+        $sorgu = $vt->prepare("SELECT * FROM sayfalar WHERE menu=? ORDER BY sira ASC");
+        $sorgu->execute(array("Üst Menü"));
+        $sayfalar = $sorgu->fetchAll(PDO::FETCH_OBJ);        
+        foreach ($sayfalar as $sayfa) {
+        ?>        
         <li class="nav-item">
-          <a class="nav-link" href="?sayfa=hakkimizda">Hakkımızda</a>
+          <a class="nav-link" href="?sayfa=sayfa&adi=<?php echo $sayfa->baslik ?>"><?php echo $sayfa->baslik ?></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?sayfa=iletisim">İletişim</a>
-        </li>
-        <?php 
+        <?php
+        }
+        $vt = null;
+        
         if ($_SESSION["yetki"]==18) {
           echo '
         <li class="nav-item dropdown">

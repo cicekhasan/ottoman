@@ -29,6 +29,7 @@ $arrSayfalar[] = 'site-ayarlari';
 $arrSayfalar[] = 'duzenle';
 $arrSayfalar[] = 'ekle';
 $arrSayfalar[] = 'guncelle';
+$arrSayfalar[] = 'sayfa';
 
 in_array($sayfa, $arrSayfalar) ? $goster = $sayfa : $goster = 'anasayfa' ;
 //($sayfa=='cikis') ? $goster = 'anasayfa' : null ;
