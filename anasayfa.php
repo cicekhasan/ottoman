@@ -25,7 +25,8 @@
                 }
                 ?>
               </div>
-              <small class="text-muted">Kategori: <?php echo htmlspecialchars_decode($icerik->kategori); ?></small>
+              <small class="text-muted">Kategori: <a href="?sayfa=kategori&kategori=<?php echo $icerik->kategori; ?>" title=""><?php echo htmlspecialchars_decode($icerik->kategori); ?></a></small>
+
             </div>
           </div>
         </div>

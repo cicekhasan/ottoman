@@ -1,5 +1,6 @@
   <div class="container my-3 p-2">
     <h3>Osmanlı Torunu Yönetimi</h3>
+    <?php if ($_SESSION["yetki"]=="18") { ?>
     <div class="row">
       <div class="col-4 col-md-2 my-2">
         <div class="card bg-info text-white">
@@ -168,21 +169,102 @@
                 <tbody>
                   <tr>
                     <td class="sol"><a href="uyeler.php">Üyeler</a></td>
-                    <td>36</td>
-                    <td>3</td>
-                    <td>39</td>
+                    <td>
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM uyeler WHERE durum=?");
+                    $sorgu->execute(array("Aktif"));
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
+                    <td>                      
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM uyeler WHERE durum=?");
+                    $sorgu->execute(array("Pasif"));
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
+                    <td>                      
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM uyeler");
+                    $sorgu->execute(array());
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
                   </tr>
                   <tr>
                     <td class="sol"><a href="kategoriler.php">Kategoriler</a></td>
-                    <td>5</td>
-                    <td>2</td>
-                    <td>7</td>
+                    <td>
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM kategoriler WHERE durum=?");
+                    $sorgu->execute(array("Aktif"));
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
+                    <td>                      
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM kategoriler WHERE durum=?");
+                    $sorgu->execute(array("Pasif"));
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
+                    <td>                      
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM kategoriler");
+                    $sorgu->execute(array());
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
                   </tr>
                   <tr>
                     <td class="sol"><a href="yorumlar.php">İçeriler</a></td>
-                    <td>58</td>
-                    <td>4</td>
-                    <td>62</td>
+                    <td>
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM icerikler WHERE durum=?");
+                    $sorgu->execute(array("Aktif"));
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
+                    <td>                      
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM icerikler WHERE durum=?");
+                    $sorgu->execute(array("Pasif"));
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
+                    <td>                      
+                    <?php 
+                    include("baglan.php");
+                    $sorgu = $vt->prepare("SELECT * FROM icerikler");
+                    $sorgu->execute(array());
+                    $sonuc = $sorgu->rowCount();
+                    echo $sonuc;
+                    $vt = null;
+                     ?>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -230,4 +312,10 @@
         </div>
       </div>
     </div>
+    <?php
+        }else{
+      echo '<div class="alert alert-danger text-center kalin">Yönetici değilsiniz, Burada işiniz yok!</div>';
+      header('refresh:100; url=index.php');
+    }
+    ?>
   </div>

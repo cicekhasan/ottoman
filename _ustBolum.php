@@ -34,11 +34,17 @@
             Kategoriler
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="?sayfa=kategori">Php</a>
-            <a class="dropdown-item" href="?sayfa=kategori">Linux</a>
-            <a class="dropdown-item" href="?sayfa=kategori">Markdown</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="?sayfa=kategori">Genel</a>
+            <?php 
+            include("baglan.php");
+            $sorgu = $vt->prepare("SELECT * FROM kategoriler WHERE durum=? ORDER BY adi ASC");
+            $sorgu->execute(array("Aktif"));
+            $kategoriler = $sorgu->fetchAll(PDO::FETCH_OBJ);
+            foreach ($kategoriler as $kategori) {
+            ?>
+            <a class="dropdown-item" href="?sayfa=kategori&kategori=<?php echo $kategori->adi ?>"><?php echo $kategori->adi ?></a>
+            <?php
+            }
+             ?>
           </div>
         </li>
         <li class="nav-item">
