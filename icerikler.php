@@ -20,27 +20,32 @@
           <tbody>
             <?php
             include("baglan.php");
-            $sorgu = $vt->prepare("SELECT * FROM icerikler");
-            $sorgu->execute();
+            if ($_SESSION["yetki"]=="18") {
+              $sorgu = $vt->prepare("SELECT * FROM icerikler");
+              $sorgu->execute(array());
+              $icerikler = $sorgu->fetchAll(PDO::FETCH_OBJ);
 
-            while ($icerik = $sorgu->fetch()) {
-
-              echo '
+              foreach ($icerikler as $icerik) {
+            ?>
             <tr>
-              <td>'.$icerik->ID.'</td>
-              <td>'.htmlspecialchars_decode($icerik->kategori).'</td>
-              <td>'.htmlspecialchars_decode($icerik->baslik).'</td>
-              <td>'.htmlspecialchars_decode($icerik->ozet).'</td>
-              <td>Hasan Çiçek</td>
-              <td>'.$icerik->eklenme.'</td>
-              <td>'.$icerik->guncellenme.'</td>
-              <td>'.$icerik->aktif.'</td>
-              <td>
+              <td style="width: 2%;"><?php echo $icerik->ID; ?></td>
+              <td style="width: 5%;"><small><?php echo htmlspecialchars_decode($icerik->kategori); ?></small></td>
+              <td style="width: 14%;"><small><?php echo htmlspecialchars_decode($icerik->baslik); ?></small></td>
+              <td style="width: 35%; font-size: 10px !important;"><?php echo htmlspecialchars_decode($icerik->ozet); ?></td>
+              <td style="width: 10%;"><small>Hasan Çiçek</small></td>
+              <td style="width: 12%;"><?php echo $icerik->eklenme; ?></td>
+              <td style="width: 12%;"><?php echo $icerik->guncellenme; ?></td>
+              <td style="width: 5%; text-align: center;"><?php echo $icerik->durum; ?></td>
+              <td style="width: 5%; text-align: center;">
                 <a href="#" title="Göster" class="text-success"><i class="fa fa-eye"></i></a><br />
                 <a href="?sayfa=guncelle" title="Güncelle" class="text-danger"><i class="fa fa-edit"></i></a><br />
               </td>
             </tr>
-              ';
+            <?php 
+              } 
+            }else{
+              echo '<div class="alert alert-danger text-center kalin">Yönetici değilsiniz, Burada işiniz yok!</div>';
+              header('refresh:100; url=index.php');
             }
             ?>
           </tbody>

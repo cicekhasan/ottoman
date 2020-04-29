@@ -4,7 +4,16 @@
       <div class="col-4 col-md-2 my-2">
         <div class="card bg-info text-white">
           <div class="card-body text-center">
-            <span class="boyut-32">21</span><br />
+            <span class="boyut-32">
+              <?php 
+              include("baglan.php");
+              $sorgu = $vt->prepare("SELECT * FROM uyeler");
+              $sorgu->execute(array());
+              $sonuc = $sorgu->rowCount();
+              echo $sonuc;
+              $vt = null;
+               ?>
+            </span><br />
             <span class="boyut-12">Üye Sayısı</span>
           </div>
         </div>
@@ -12,7 +21,16 @@
       <div class="col-4 col-md-2 my-2">
         <div class="card bg-success text-white">
           <div class="card-body text-center">
-            <span class="boyut-32">18</span><br />
+            <span class="boyut-32">
+              <?php 
+              include("baglan.php");
+              $sorgu = $vt->prepare("SELECT * FROM icerikler");
+              $sorgu->execute(array());
+              $sonuc = $sorgu->rowCount();
+              echo $sonuc;
+              $vt = null;
+               ?>
+             </span><br />
             <span class="boyut-12">İçerik Sayısı</span>
           </div>
         </div>
@@ -67,34 +85,24 @@
                   </tr>
                 </thead>
                 <tbody>
+              <?php 
+              include("baglan.php");
+              $sorgu = $vt->prepare("SELECT * FROM uyeler ORDER BY ID DESC LIMIT 10");
+              $sorgu->execute(array());
+              $uyeler = $sorgu->fetchAll(PDO::FETCH_OBJ);
+              foreach ($uyeler as $uye) {
+              ?>
                   <tr>
-                    <td>4</td>
-                    <td>hasan.cicek@yandex.com.tr</td>
+                    <td><?php echo $uye->ID; ?></td>
+                    <td><?php echo $uye->ePosta; ?></td>
                     <td>Ankara</td>
                     <td>175.156.88.45</td>
-                    <td>15.04.2020</td>
+                    <td><?php echo $uye->eklenme; ?></td>
                   </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>kemal.sunal@gmail.com</td>
-                    <td>İstanbul</td>
-                    <td>212.45.123.34</td>
-                    <td>14.04.2020</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>senersen@hotmail.com</td>
-                    <td>Kayseri</td>
-                    <td>125.62.124.66</td>
-                    <td>14.04.2020</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>ayhan.isik@gmail.com</td>
-                    <td>Yozgat</td>
-                    <td>126.122.111.45</td>
-                    <td>13.04.2020</td>
-                  </tr>
+              <?php
+              }
+              $vt = null;
+               ?>                  
                 </tbody>
               </table>
             </div>
@@ -116,38 +124,25 @@
                   </tr>
                 </thead>
                 <tbody>
+              <?php 
+              include("baglan.php");
+              $sorgu = $vt->prepare("SELECT * FROM icerikler ORDER BY baslik ASC LIMIT 10");
+              $sorgu->execute(array());
+              $icerikler = $sorgu->fetchAll(PDO::FETCH_OBJ);
+              foreach ($icerikler as $icerik) {
+              ?>
                   <tr>
-                    <td>53</td>
-                    <td>Php Çalışma Ortamı Hazırlama</td>
-                    <td>15.04.2020</td>
-                    <td>15.04.2020</td>
+                    <td><?php echo $icerik->ID; ?></td>
+                    <td><?php echo $icerik->baslik; ?></td>
+                    <td><?php echo $icerik->eklenme; ?></td>
+                    <td><?php echo $icerik->guncellenme; ?></td>
                     <td>256</td>
                     <td>8</td>
                   </tr>
-                  <tr>
-                    <td>126</td>
-                    <td>Ubuntu Kurulumu</td>
-                    <td>14.04.2020</td>
-                    <td>14.04.2020</td>
-                    <td>186</td>
-                    <td>18</td>
-                  </tr>
-                  <tr>
-                    <td>127</td>
-                    <td>Ubuntu Kurulum Sonrası Yapılması Gerekenler</td>
-                    <td>14.04.2020</td>
-                    <td>14.04.2020</td>
-                    <td>180</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Linux Hata Çözümleri</td>
-                    <td>13.04.2020</td>
-                    <td>15.04.2020</td>
-                    <td>101</td>
-                    <td>53</td>
-                  </tr>
+              <?php
+              }
+              $vt = null;
+               ?>
                 </tbody>
               </table>
             </div>

@@ -9,51 +9,33 @@
               <th>ID</th>
               <th>Kategori Adı</th>
               <th>İçerik Sayısı</th>
+              <th>Yorum Sayısı</th>
               <th>Durumu</th>
               <th>İşlem</th>
             </tr>
           </thead>
           <tbody>
+            <?php
+            include("baglan.php");
+            $sorgu = $vt->prepare("SELECT * FROM kategoriler");
+            $sorgu->execute(array());
+            $kategoriler = $sorgu->fetchAll(PDO::FETCH_OBJ);
+            foreach ($kategoriler as $kategori) {
+            ?>
             <tr>
-              <td>1</td>
-              <td>Genel</td>
-              <td>25</td>
-              <td>Aktif</td>
+              <td><?php echo $kategori->ID ?></td>
+              <td><?php echo $kategori->adi ?></td>
+              <td><?php echo $kategori->ID ?></td>
+              <td><?php echo $kategori->ID ?></td>
+              <td><?php echo $kategori->durum ?></td>
               <td>
                 <a href="#" class="text-success"><i class="fa fa-eye"></i></a>
                 <a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
               </td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Linux</td>
-              <td>101</td>
-              <td>Aktif</td>
-              <td>
-                <a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-                <a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Markdown</td>
-              <td>26</td>
-              <td>Aktif</td>
-              <td>
-                <a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-                <a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Php</td>
-              <td>56</td>
-              <td>Aktif</td>
-              <td>
-                <a href="#" class="text-success"><i class="fa fa-eye"></i></a>
-                <a href="#" class="text-danger"><i class="fa fa-edit"></i></a>
-              </td>
-            </tr>
+            <?php
+            }
+            ?>
           </tbody>
         </table>
       </div>

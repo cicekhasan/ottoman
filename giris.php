@@ -1,6 +1,3 @@
-<?php 
-session_start();
-?>
   <div class="container my-3 p-2">
 		<div class="row">
 			<div class="col-md-4 offset-md-1">
@@ -46,8 +43,8 @@ session_start();
                 $eklenme      = date("d/m/Y G:i:s");
 
                 $sorgu = $vt->prepare("SELECT * FROM uyeler WHERE ePosta=?");
-                $sorgu->execute(["{$ePosta}"]);
-                $sonuc = $sorgu->fetch();
+                $sorgu->execute(array($ePosta));
+                $sonuc = $sorgu->fetch(PDO::FETCH_OBJ);
 
                 if ($ePosta==$sonuc->ePosta) {
                   echo '<div class="alert alert-danger">Başka bir E-Posta denemelisin. Bu E-Posta kayıtlı!</div>';

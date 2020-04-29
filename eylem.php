@@ -6,9 +6,9 @@ if (isset($_SESSION["oturum"]) && $_SESSION["oturum"] == "1453") {
 }else if (isset($_COOKIE["cerez"])) {
   include("baglan.php");
   $sorgu = $vt->prepare("SELECT ePosta FROM uyeler");
-  $sorgu->execute();
+  $sorgu->execute(array());
 
-  while ($sonuc = $sorgu->fetch()) {
+  while ($sonuc = $sorgu->fetch(PDO::FETCH_OBJ)) {
     if ($_COOKIE["cerez"] == $sonuc['ePosta']) {
       $_SESSION["oturum"]       = "1453";
       $_SESSION["ePosta"]       = $sonuc->ePosta;
@@ -26,7 +26,7 @@ if (isset($_POST['giris'])) {
   $parola = md5($_POST['parola']);
   $sorgu  = $vt->prepare("SELECT * FROM uyeler WHERE ePosta=?");
   $sorgu->execute(["{$ePosta}"]);
-  $sonuc  = $sorgu->fetch();
+  $sonuc  = $sorgu->fetch(PDO::FETCH_OBJ);
 
   if ($parola==$sonuc->parola) {
     $_SESSION["oturum"]       = "1453";
