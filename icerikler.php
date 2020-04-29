@@ -38,7 +38,7 @@
               <td style="width: 5%; text-align: center;"><?php echo $icerik->durum; ?></td>
               <td style="width: 5%; text-align: center;">
                 <a href="#" title="Göster" class="text-success"><i class="fa fa-eye"></i></a><br />
-                <a href="?sayfa=guncelle" title="Güncelle" class="text-danger"><i class="fa fa-edit"></i></a><br />
+                <a href="?sayfa=guncelle&id=<?php echo $icerik->ID; ?>" title="Güncelle" class="text-danger"><i class="fa fa-edit"></i></a><br />
               </td>
             </tr>
             <?php 

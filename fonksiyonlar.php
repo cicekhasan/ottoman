@@ -38,19 +38,3 @@ function GetIP(){
 	}
 	return $ip;
 }
-
-$yazi=trim($_POST["yazi"]);
-$yazi= str_replace ( "&ccedil;", "ç",$yazi); 
-$yazi= str_replace ( "&yacute;","ı",$yazi); 
-$yazi= str_replace ( "&Ccedil;", "Ç",$yazi); 
-$yazi= str_replace ( "&Ouml;", "Ö",$yazi); 
-$yazi= str_replace ( "&Uuml;", "Ü",$yazi); 
-$yazi= str_replace ( "&ETH;","Ğ",$yazi); 
-$yazi= str_replace ( "&THORN;","Ş",$yazi); 
-$yazi= str_replace ( "&Yacute;","İ",$yazi); 
-$yazi= str_replace ( "&ouml;","ö",$yazi); 
-$yazi= str_replace ( "&thorn;","ş",$yazi); 
-$yazi= str_replace ( "&eth;","ğ",$yazi); 
-$yazi= str_replace ( "&uuml;","ü",$yazi); 
-$yazi= str_replace ( "&amp;", "&",$yazi); 
-$yazi= str_replace ( "&nbsp;", " ",$yazi);
