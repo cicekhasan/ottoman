@@ -39,7 +39,7 @@
                 $kullaniciAdi = htmlspecialchars($_POST['kullaniciAdi']);
                 $proDili      = htmlspecialchars($_POST['proDili']);
                 $konum        = htmlspecialchars("Ankara");
-                $ipAdresi     = htmlspecialchars("127.0.0.1");
+                $ipAdresi     = $_SERVER['REMOTE_ADDR'];
                 $eklenme      = date("d/m/Y G:i:s");
 
                 $sorgu = $vt->prepare("SELECT * FROM uyeler WHERE ePosta=?");

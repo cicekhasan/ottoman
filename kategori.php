@@ -1,5 +1,4 @@
 <?php 
-if ($_SESSION["yetki"]=="18") {
   $kategori = $_GET['kategori'];
 ?>
   <div class="container p-2">
@@ -38,9 +37,3 @@ if ($_SESSION["yetki"]=="18") {
     <?php  } $vt = null; ?>
     </div>
   </div>
-<?php
-}else{
-  echo '<div class="alert alert-danger text-center kalin">Yönetici değilsiniz, Burada işiniz yok!</div>';
-  header('refresh:100; url=index.php');
-}
-?>
