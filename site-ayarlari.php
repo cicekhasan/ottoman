@@ -1,3 +1,7 @@
-  <div class="container my-3 p-2">
-    <h2>Site ayarları sayfası güncelleniyor...</h2>
-  </div>
+			<div class="col-md-12 my-2">
+        <div class="card p-2">
+          <div class="card-header bg-success text-white text-center">SİTE AYARLARI GÜNCELLEME EKRANI</div>
+          <div class="card-body">
+          </div>
+        </div>
+      </div>

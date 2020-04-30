@@ -15,6 +15,7 @@ if (isset($_SESSION["oturum"]) && $_SESSION["oturum"] == "1453") {
       $_SESSION["adi"]          = $sonuc->adi;
       $_SESSION["kullaniciAdi"] = $sonuc->kullaniciAdi;
       $_SESSION["yetki"]        = $sonuc->yetki;
+      $_SESSION["id"]           = $sonuc->ID;
       header("location:index.php");
     }
   }
@@ -34,6 +35,7 @@ if (isset($_POST['giris'])) {
     $_SESSION["adi"]          = htmlspecialchars_decode($sonuc->adi);
     $_SESSION["kullaniciAdi"] = htmlspecialchars_decode($sonuc->kullaniciAdi);
     $_SESSION["yetki"]        = htmlspecialchars_decode($sonuc->yetki);
+    $_SESSION["id"]           = $sonuc->ID;
 
     if (isset($_POST["beniHatirla"])) {
       setcookie("cerez", htmlspecialchars_decode($sonuc->ePosta), time() + (60 * 60 * 24 * 7));
