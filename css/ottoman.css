@@ -1,0 +1,22 @@
+
+
+.yatay-kart{
+	float: left;
+	padding-left: 0px; 
+	border-left: 4px solid;
+	border-right: 1px solid;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+.yatay-kart-baslik{
+	padding: 10px;
+	margin: 0px;
+	font-size: 16px;
+	font-weight: bold;
+	border: 1px solid;
+}
+
+.yatay-kart-icerik{
+	padding: 5px;
+}

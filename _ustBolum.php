@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/renk.css">
+  <link rel="stylesheet" href="css/ottoman.css">
   <!--<script src="./ckeditor/ckeditor.js"></script>--> 
   <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
   <title>Aysubey</title>
+  <?php include("ayar.php"); ?>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">

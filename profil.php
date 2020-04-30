@@ -80,30 +80,35 @@
              ?>             
             <form action="" method="post">
               <div class="row">
-              	<div class="col-md-4">E-Posta</div>
-                <div class="col-md-8">
+              	<div class="col-md-3">E-Posta</div>
+                <div class="col-md-9">
                   <label type="text" class="form-control" name="ePosta"><?php echo $uye->ePosta; ?></label>
                 	<small class="form-text text-muted">Kullanıcı adı olduğu için değiştiremezsiniz!</small>
                 </div>
               </div><br />    
               <div class="row">
                 <div class="col-md-6">
+                  <label>Parola</label>
                   <input type="text" class="form-control" placeholder="Parolayı gir..." name="parola">
                 </div>
                 <div class="col-md-6">
+                  <label>Parola Tekrarı</label>
                   <input type="text" class="form-control" placeholder="Parolayı tekrar gir..." name="parolaTekrar">
                 </div>
               </div><br />
               <div class="row">
                 <div class="col-md-6">
+                  <label>Ad ve Soyad</label>
                   <input type="text" class="form-control" value="<?php echo $uye->adi; ?>" name="adi" required>
                 </div>
                 <div class="col-md-6">
+                  <label>Kullanıcı Adı</label>
                   <input type="text" class="form-control" value="<?php echo $uye->kullaniciAdi; ?>" name="kullaniciAdi" required>
                 </div>
               </div><br />
               <div class="row">
                 <div class="col-md-12">
+                  <label>Bildiğiniz Programlama Dilleri yada İlgi Alanlarınız</label>
                   <input type="text" class="form-control" value="<?php echo $uye->proDili; ?>" name="proDili">
                 </div>
               </div><br />
